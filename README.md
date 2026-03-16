@@ -12,7 +12,8 @@
 
 这是我反代的ChatGPT账户额度Api
 
-https://mmbiz.qpic.cn/mmbiz_png/xMvTmmstK21OoFJwTuvYFT20W40icjN0UBvPtDiayZJElXkJqDlaTicXD4ychem3mxAnShQicfG6rhYATIknHTnbzjbVbaxgVziaPgn1gwQkicdqU/640?wx_fmt=png&from=appmsg
+![1dad65ac9a3c1d2532c40fb2591f6599.png](./_resources/1dad65ac9a3c1d2532c40fb2591f6599.png)
+
 项目地址：
 https://github.com/Wei-Shaw/sub2api
 
