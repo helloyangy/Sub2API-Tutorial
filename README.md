@@ -31,18 +31,21 @@ https://github.com/Wei-Shaw/sub2api
 1.我的系统是Debian，SSH连接服务器后，先安装仓库源
 
 ```
-sudo apt update
-sudo apt install -y ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-sudo tee /etc/apt/sources.list.d/docker.sources > /dev/null <<EOF
+sudo apt update
+sudo apt install -y ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+sudo tee /etc/apt/sources.list.d/docker.sources > /dev/null <<EOF
 Types: deb
 URIs: https://download.docker.com/linux/debian
 Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
 Components: stable
 Signed-By: /etc/apt/keyrings/docker.asc
 EOF
+
+sudo apt update
 ```
 
 ![30356fed42590f807383e186f36f044b.png](./_resources/30356fed42590f807383e186f36f044b.png)
@@ -50,9 +53,9 @@ EOF
 2.安装 Docker 与 Compose
 
 ```
-sudo apt update
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-sudo systemctl enable docker --now
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo systemctl enable --now docker.service
 ```
 
 ![4f96fd770060fab536b09e950b0f9ba8.png](./_resources/4f96fd770060fab536b09e950b0f9ba8.png)
@@ -60,7 +63,7 @@ sudo systemctl enable docker --now
 3.安装sub2api
 
 ```
-mkdir -p sub2api-deploy && cd sub2api-deploy
+mkdir -p sub2api-deploy && cd sub2api-deploy
 curl -sSL https://raw.githubusercontent.com/Wei-Shaw/sub2api/main/deploy/docker-deploy.sh | bash
 docker compose up -d
 docker compose logs -f sub2api
@@ -76,7 +79,7 @@ docker compose logs -f sub2api
 管理员用户名是admin@sub2api.local
 密码是容器首次启动时自动生成的一次性管理员密码，这时用下面命令找
 ```
-cd ~/sub2api-deploy
+cd ~/sub2api-deploy
 docker compose logs sub2api | grep -i admin
 ```
 
